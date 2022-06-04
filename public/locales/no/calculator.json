@@ -1,0 +1,39 @@
+{
+    "annualOverview"        : "Årlig oversikt",
+    "monthOverview"         : "Månedlig Oversikt",
+    "tableOverview"         : "Tabell",
+    "calendarOverview"      : "Kalender",
+
+    "addDay"                : "Legg til arbeidsdag",
+    "editDay"               : "Rediger arbeidsdag",
+
+    "date"                  : "Dato",
+    "start"                 : "Start",
+    "end"                   : "Slutt",
+    "unpaidBreak"           : "Ubetalt pause",
+    "plannedDayOff"         : "Planlagt fridag",
+    "manualNightLabour"     : "Manuelt Nattarbeid",
+    "minutes"               : "Minutter",
+    "rate"                  : "Sats",
+    "total"                 : "Total",
+
+    "add"                   : "Legg til",
+    "cancel"                : "Avbryt",
+    "noData"                : "Ingen data",
+
+    "clockTime"             : "Klokkeslett",
+    "hours"                 : "Timer",
+
+    "weekendSupplement"     : "Helg",
+    "eveningSupplement"     : "Kveld",
+    "nightSupplement"       : "Natt",
+    "holydaySupplement"     : "Helligdag",
+    "supplementTotal"       : "Tillegg totalt",
+
+    "employmentContract"    : "Arbeidsavtale",
+    "noContract"            : "Ingen arbeidsavtale registert",
+
+    "errorOutsideAppLimit"  : "Dato er utenfor applikasjonens datobegrensning!",
+    "errorOverlapDate"      : "Arbeidstiden overlapper eksisterende arbeiedstid!"
+
+}

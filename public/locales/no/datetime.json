@@ -1,0 +1,82 @@
+{
+    "january"       : "Januar",
+    "januaryShort"  : "Jan",
+
+    "february"      : "Februar",
+    "februaryShort" : "Feb",
+
+    "mars"          : "Mars",
+    "marsShort"     : "Mars",
+
+    "april"         : "April",
+    "aprilShort"    : "Apr",
+
+    "may"           : "Mai",
+    "mayShort"      : "Mai",
+
+    "june"          : "Juni",
+    "juneShort"     : "Jun",
+
+    "july"          : "Juli",
+    "julyShort"     : "Jul",
+
+    "august"        : "August",
+    "augustShort"   : "Aug",
+
+    "september"     : "September",
+    "septemberShort": "Sep",
+
+    "october"       : "Oktober",
+    "octoberShort"  : "Okt",
+
+    "november"      : "November",
+    "novemberShort" : "Nov",
+
+    "december"      : "Desember",
+    "decemberShort" : "Des",
+
+
+    "monday"        : "Mandag",
+    "mondayShort"   : "Man",
+
+    "tuesday"       : "Tirsdag",
+    "tuesdayShort"  : "Tirs",
+
+    "wednesday"     : "Onsdag",
+    "wednesdayShort": "Ons",
+
+    "thursday"      : "Torsdag",
+    "thursdayShort" : "Tors",
+
+    "friday"        : "Fredag",
+    "fridayShort"   : "Fre",
+
+    "saturday"      : "Lørdag",
+    "saturdayShort" : "Lør",
+
+    "sunday"        : "Søndag",
+    "sundayShort"   : "Søn",
+
+    
+    "maundyThursday": "Skjærtorsdag",
+    "goodFriday"    : "Langfredag",
+    "easter"        : "Påskeaften",
+    "easterSunday"  : "Første påskedag",
+    "easterMonday"  : "Andre påskedag",
+
+    "mayFirst"      : "1. Mai",
+    "maySeventeen" : "17. Mai",
+
+    "ascension"     : "Kristi Himmelfartsdag",
+
+    "pentecost"         : "Pinseaften",
+    "pentecostSunday"   : "Første Pinsedag",
+    "pentecostMonday"   : "Andre Pinsedag",
+
+    "christmas"     : "Julaften",
+    "christmasday"  : "Første Juledag",
+    "christmasday2" : "Andre Juledag",
+
+    "newYear"       : "Nyttårsaften",
+    "newYearDay"    : "Første Nyttårsdag"
+}

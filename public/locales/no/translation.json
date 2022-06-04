@@ -1,0 +1,36 @@
+{
+    "appTitle"              : "Overtid",
+    "selectLanguage"        : "Velg språk",
+    "workhour"              : "Arbeidstid",
+    "employmentContract"    : "Arbeidsavtaler",
+    "collectiveAgreements"  : "Tariffavtaler",
+    "signin"                : "Logg inn",
+    "signup"                : "Register",
+    "signout"               : "Logg ut",
+
+    "email"                 : "Epost",
+    "emailRequiredError"    : "Epost mangler!",
+    "emailFormatError"      : "Ikke gyldig epostadresse!",
+
+    "password"                  : "Passord",
+    "passwordRepeat"            : "Gjenta passord",
+    "passwordRequireMissing"    : "Passord mangler!",
+    "passwordFormatError"       : "Passord må være mellom 8 og 20 karakterer, og inneholde minst ett tall og en stor bokstav",
+    "passwordRepeatError"       : "Passordene er ikke de samme!",
+
+    "serverErrorShort"      : "Noe gikk galt, vent eller prøv igjen...",
+    "signinCredentialError" : "Feil epost eller passord!",
+    "forgotPassword"        : "Glemt passord?",
+
+    "firstName"                 : "Fornavn",
+    "firstNameRequiredMissing"  : "Fornavn mangler!",
+    "lastName"                  : "Etternavn",
+    "lastNameRequiredMissing"   : "Etternavn mangler!",
+
+    "acceptTerms"           : "Jeg har lest brukervilkårene",
+
+    "userAccount"           : "Brukerkonto",
+
+    "employers"             : "Arbeidsgivere" 
+    
+}

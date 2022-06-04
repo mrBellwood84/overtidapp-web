@@ -1,0 +1,63 @@
+{
+    "name"              : "Navn",
+    "nameLegal"         : "Juridisk navn",
+    "nameRequiredError" : "Navn mangler!",
+
+    "orgNumberShort"    : "Org nr",
+    "orgNumber"         : "Organisasjonsnummer",
+
+    "address"               : "Adresse",
+    "addressOfficial"       : "Offisiell adresse",
+    "addressJuridical"      : "Juridisk adresse",
+    "adressRequireError"    : "Adresse mangler!",
+
+    "postalArea"                : "Poststed",
+    "postalAeraLegal"           : "Offisielt poststed",
+    "postalAreaRequireError"    : "Poststed mangler!",
+
+    "zipcode"               : "Postnummer",
+    "zipcodeLegal"          : "Offisielt Postnummer",
+    "zipCodeRequireError"   : "Postnummer mangler!",
+
+    "county"                : "Kommune",
+    "countyLegal"           : "Offisiell kommune",
+    "countyRequireError"    : "Kommune mangler!",
+
+    "hasCollectiveAgreement" : "Har tariffavtale",
+    "industryCode"      : "Næringskode",
+    
+    "search"            : "Søk",
+    "searchLabel"       : "Navn / by / org nr...",
+    "searchOrgNumber"   : "Søk etter arbeidsgiver med organisasjonsnummer.",
+    "searhOrgNumberInfo": "Søket vil hente inn data fra Brønnøysundregisteret. Dersom navn eller adresse må endres, kan du legge til en forespørsel om dette. Husk å krysse av dersom arbeidsgiver er bundet av en avtale.",
+
+
+    "noBrregContact"    : "Ingen kontakt med Brønnøysundregisteret.",
+    "serverErrorShort"  : "Det skjedde en feil ved registrering.",
+    "tryLater"          : "Prøv igjen senere...",
+
+    "wrongIndustryCodeError"    : "Arbeidsgiver er registert med feil næringskode!",
+    "searchOrgNumberNoResult"   : "Ingen resultater for",
+    "employerExistError"        : "Arbeidsgiver er allerede registrert!",
+
+    "add"               : "Legg til",
+    "addEmployer"       : "Legg til ny arbeidsgiver",
+
+    "edit"              : "Rediger",
+    "editEmployer"      : "Rediger profil for arbeidsgiver",
+
+    "editRequests"      : "Endringsforespørsler",
+    "editRequestsTip"   : "Se og rediger endringsforespørsler",
+
+    "back"              : "Tilbake",
+    "close"             : "Lukk",
+    "register"          : "Registrer",
+
+    "addEmploymentContract"     : "Legg til ny arbeidskontrakt",
+    "editEmploymentContract"    : "Rediger arbeidskontrakt",
+
+    "contractStartDate"         : "Ansatt fra",
+    "contractStartDateMissing"  : "Oppstartsdato for ansettelse mangler",
+
+    "contractEndDate"           : "Ansatt til"
+}
