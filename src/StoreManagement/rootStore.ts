@@ -5,8 +5,8 @@ import { agreementStateReducer } from "./Agreements/agreementStateReducer";
 import { IAgreementState } from "./Agreements/IAgreementState";
 import { calculatorStateReducer } from "./Calculator/calculatorStateReducer";
 import { ICalculatorState } from "./Calculator/ICalculatorState";
-import { employmentStateReducer } from "./Employment/EmploymentStateReducer";
-import { IEmploymentState } from "./Employment/IEmploymentState";
+import { employerStateReducer } from "./Employer/employerStateReducer";
+import { IEmployerState } from "./Employer/IEmployerState";
 import { IMiscState } from "./Misc/IMiscState";
 import { miscStateReducer } from "./Misc/MiscStateReducer";
 
@@ -15,7 +15,7 @@ export interface AppState {
     account: IAccountState
     agreement: IAgreementState;
     calculator: ICalculatorState;
-    employment: IEmploymentState;
+    employer: IEmployerState;
     misc: IMiscState;
 }
 
@@ -24,7 +24,7 @@ const rootReducer = combineReducers<AppState>({
     account: accountStateReducer,
     agreement: agreementStateReducer,
     calculator: calculatorStateReducer,
-    employment: employmentStateReducer,
+    employer: employerStateReducer,
     misc: miscStateReducer,
 })
 

@@ -1,5 +1,5 @@
 import { Box, List, ListItem } from "@mui/material"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux"
 import { EmployersApiAgent } from "../../../ApiAgent/PublicData/EmployersApiAgent";
@@ -8,11 +8,17 @@ import { AppState } from "../../../StoreManagement/rootStore"
 import { EmployerListItem } from "./EmployerListItem";
 import { EmployerSearchBar } from "./EmployerSearchBar";
 
-export const EmployerListView = () => {
+interface IProps {
+    selectHook?: () => void;
+}
+
+export const EmployerListView = ({selectHook}: IProps) => {
 
     const dispatch = useDispatch()
     const employers = useSelector((state :AppState) => state.employment.employersFiltered);
     const dataLoaded = useSelector((state :AppState) => state.employment.employerDataLoaded)
+
+    const select = 
     
 
     useEffect(() => {

@@ -12,15 +12,18 @@ export interface IEmploymentContract {
     /** Employer object */
     employer: IEmployer;
 
+    /** Title / job */
+    jobTitle: string;
+
     /** Start of contract period */
     contractStart: Date;
     /** Date when contract period is set to expired*/
-    contractExpire: Date;
+    contractExpire?: Date;
     /** Date if and when contract was terminated or if expired*/
-    contractEnded: Date | null;
+    contractEnded?: Date;
 
     /** Max hours per week */
-    maxHoursPerWeek: number;
+    maxHoursMonth: number;
     /** Percentage of position */
     positionPercentage: number;
 
