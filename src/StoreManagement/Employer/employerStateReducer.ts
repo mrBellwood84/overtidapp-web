@@ -30,6 +30,7 @@ type Action =
     | ReturnType<typeof employerStateActions.setShortDataFiltered>
     | ReturnType<typeof employerStateActions.setChangeSuggestions>
     | ReturnType<typeof employerStateActions.setSelected>
+    | ReturnType<typeof employerStateActions.resetFilteredLists>
     | ReturnType<typeof employerStateActions.addNewEmployer>
     | ReturnType<typeof employerStateActions.sign_out>
     | ReturnType<typeof employerStateActions.loadStateFromSession>
@@ -119,6 +120,19 @@ export const employerStateReducer = (
             stateStorage.set(key, state)
             return newState;
         
+        case "EMPLOYER_RESET_FILTERED_LISTS":
+            
+            fullList = [...state.employersFullInfoList]
+            shortList = [...state.employersShortInfoList]     
+            
+            newState = {
+                ...state,
+                employersFullInfoFiltered: fullList,
+                employersShortInfoFiltered: shortList,
+            }
+
+            return newState;
+            
         case "EMPLOYER_ADD_EMPLOYER_DATA": 
             
             fullList = [...state.employersFullInfoList]

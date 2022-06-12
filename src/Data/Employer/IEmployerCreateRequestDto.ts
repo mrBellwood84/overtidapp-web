@@ -11,5 +11,5 @@ export interface IEmployerCreateRequestDto {
     legalData: IEmployerEditSuggestionDto;
 
     /** suggestion for changing data for place of employment */
-    usedData: IEmployerEditSuggestionDto;
+    changeSuggestion: IEmployerEditSuggestionDto;
 }

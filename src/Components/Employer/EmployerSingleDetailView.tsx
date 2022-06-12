@@ -14,7 +14,7 @@ export const EmployerSingleDetailView = () => {
     const navigate = useNavigate();
 
     const handleNavigateBack = () => {
-        navigate(-1);
+        navigate("../employers");
     }
 
     return (
@@ -37,6 +37,10 @@ export const EmployerSingleDetailView = () => {
                     </IconButton>
                 </Tooltip>
 
+                <Typography variant="h6" component="div">
+                    {selected?.nameUsed}
+                </Typography>
+
             </Box>
 
             <Box sx={{display: "flex", justifyContent: "space-between", borderBottom: "1px solid lightgrey", mb:2, pb: 2}}>
@@ -49,7 +53,7 @@ export const EmployerSingleDetailView = () => {
                 </Box>
 
                 <Box>
-                    <Typography variant="subtitle2"> {t("addressJuridical")} </Typography>
+                    <Typography variant="subtitle2"> {t("addressLegal")} </Typography>
                     <Typography variant="body2" component="div"> {selected?.addressLegal} </Typography>
                     <Typography variant="body2" component="div"> {selected?.zipCodeLegal} {selected?.postAreaLegal} </Typography>
                     <Typography variant="body2" component="div"> {selected?.regionLegal} </Typography>
@@ -66,10 +70,6 @@ export const EmployerSingleDetailView = () => {
                     </Box>
                 </Box>
 
-            </Box>
-
-            <Box>
-                DEV :: vis tariffavtale her!
             </Box>
 
         </Container>

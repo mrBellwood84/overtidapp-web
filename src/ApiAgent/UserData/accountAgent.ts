@@ -46,7 +46,7 @@ export const accountAgent = {
             let res: ISigninResponse = await response.json()
             return res;
         } catch (ex) {
-            console.log("DEV :: Cound not get accout object when user signed up!", ex)
+            console.error("DEV :: Cound not get accout object when user signed up!", ex)
             return 500;
         }
 

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { LanguageSelectDialog } from "./Components/Misc/Dialogs/SelectLanguageDialog";
+import { LoadPage } from "./Components/Misc/LoadPage";
 import { accountStateActions } from "./StoreManagement/Account/accountStateActions";
 import { AppState } from "./StoreManagement/rootStore";
 import { AdminViewRoot } from "./Views/AdminViewRoot";
@@ -16,6 +17,7 @@ const App = () => {
   useEffect(() => {
     dispatch(accountStateActions.loadStateFromSession())
   },[dispatch])
+
 
   return (
     <div className="App">

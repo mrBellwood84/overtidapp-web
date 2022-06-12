@@ -1,6 +1,6 @@
 import { Search } from "@mui/icons-material";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import { ChangeEvent, SetStateAction, useState, useTransition } from "react"
+import { ChangeEvent, SetStateAction, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { externalApiRequests } from "../../../ApiAgent/externalApiRequests";
 import { IBrrregEntity } from "../../../Data/External Request/IBrregEntity"
@@ -94,31 +94,42 @@ export const EmployerPublicRecordQueryField = ( { setQueryResult, setOrgNum }: I
 
     return (
         <Box>
+            <Typography variant="subtitle2" component="div" textAlign="center">
+                {t("searchOrgNumber")}
+            </Typography>
+
+            <Box sx={{
+                mt: 2,
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center"
+            }}>
+                <TextField 
+                    variant="standard"
+                    label={t("orgNumber")} 
+                    onChange={handleFieldInput} />
+
+                <Button 
+                    color="primary"
+                    startIcon={<Search />}
+                    variant="contained"
+                    size="small"
+                    sx={{ml: 2}}
+                    onClick={handleSearch}
+                    disabled={!validOrgNum}>
+                        {t("search")}
+                </Button>
+            </Box>
+
             <Grid container spacing={2} alignItems="center">
-                <Grid item xs={12}>
-                    <Typography variant="subtitle2" component="div">
-                        {t("searchOrgNumber")}
-                    </Typography>
-                </Grid>
                 <Grid item xs={7}>
-                    <TextField 
-                        fullWidth
-                        variant="standard"
-                        label={t("orgNumber")}  
-                        onChange={handleFieldInput} />
+
                 </Grid>
                 <Grid item xs={5}>
-                    <Button 
-                        color="primary"
-                        startIcon={<Search />}
-                        variant="contained"
-                        onClick={handleSearch}
-                        disabled={!validOrgNum}>
-                            {t("search")}
-                        </Button>
+
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body2" component="div" sx={{mt:2}}>
+                    <Typography variant="body2" component="div" sx={{mt:2, textAlign: "center"}}>
                         {t("searhOrgNumberInfo")}
                     </Typography>
                 </Grid>

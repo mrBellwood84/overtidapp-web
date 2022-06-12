@@ -26,8 +26,9 @@ export const AppbarBase = ({links}: IProps) => {
 
     const [menuDialogOpen, setMenuDialogOpen] = useState<boolean>(false)
 
-    const openMenuDialog = () => setMenuDialogOpen(true)
-    const closeMenuDialog = () => setMenuDialogOpen(false)
+    const handleMenuDialogOpen = () => setMenuDialogOpen(true)
+    const handleMenuDialogClose = () => {setMenuDialogOpen(false); console.log("close", menuDialogOpen)}
+
 
     return (
         <AppBar position="relative">
@@ -86,7 +87,7 @@ export const AppbarBase = ({links}: IProps) => {
                     
                     <IconButton 
                         color={"inherit"} 
-                        onClick={openMenuDialog}
+                        onClick={handleMenuDialogOpen}
                         sx={{gridColumn: 1}}>
                         <Menu />
                     </IconButton>
@@ -119,7 +120,7 @@ export const AppbarBase = ({links}: IProps) => {
                     <Dialog
                         fullScreen
                         open={menuDialogOpen}
-                        onClose={closeMenuDialog}
+                        onClose={handleMenuDialogClose}
                         TransitionComponent={Transition}>
                         
                         <AppBar sx={{position: 'relative'}}>
@@ -127,7 +128,7 @@ export const AppbarBase = ({links}: IProps) => {
                                 <IconButton 
                                     edge="start"
                                     color="inherit"
-                                    onClick={closeMenuDialog}
+                                    onClick={handleMenuDialogClose}
                                     aria-label="close">
                                         <Close />
                                 </IconButton>
@@ -137,7 +138,7 @@ export const AppbarBase = ({links}: IProps) => {
                         <List dense>
                             {links.map(link => (
                                 <ListItem key={`list-menu-item-${link.href}`} component={Link} to={link.href} >
-                                    <ListItemButton onClick={closeMenuDialog} dense>
+                                    <ListItemButton onClick={handleMenuDialogClose} dense>
                                         <ListItemIcon>
                                             {link.linkIcon && link.linkIcon}
                                         </ListItemIcon>

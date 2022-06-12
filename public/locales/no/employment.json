@@ -7,20 +7,19 @@
     "orgNumber"         : "Organisasjonsnummer",
 
     "address"               : "Adresse",
-    "addressOfficial"       : "Offisiell adresse",
-    "addressJuridical"      : "Juridisk adresse",
+    "addressLegal"          : "Juridisk adresse",
     "adressRequireError"    : "Adresse mangler!",
 
     "postalArea"                : "Poststed",
-    "postalAeraLegal"           : "Offisielt poststed",
+    "postalAeraLegal"           : "Juridisk poststed",
     "postalAreaRequireError"    : "Poststed mangler!",
 
     "zipcode"               : "Postnummer",
-    "zipcodeLegal"          : "Offisielt Postnummer",
+    "zipcodeLegal"          : "Juridisk Postnummer",
     "zipCodeRequireError"   : "Postnummer mangler!",
 
     "county"                : "Kommune",
-    "countyLegal"           : "Offisiell kommune",
+    "countyLegal"           : "Juridisk Kommune",
     "countyRequireError"    : "Kommune mangler!",
 
     "hasCollectiveAgreement" : "Har tariffavtale",

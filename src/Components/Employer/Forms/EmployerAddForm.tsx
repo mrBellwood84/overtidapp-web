@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { employerApiAgent } from "../../../ApiAgent/PublicData/employerApiAgent";
 import { appConfig } from "../../../appConfig";
 import { IEmployerCreateRequestDto } from "../../../Data/Employer/IEmployerCreateRequestDto";
@@ -36,6 +37,8 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
     const dispatch = useDispatch();
 
     const { t } = useTranslation("employment");
+
+    const navigate = useNavigate();
 
     const [formErrorMsg, setFormErrorMsg] = useState<string | undefined>(undefined);
     const [apiLoading, setApiLoading] = useState<boolean>(false);
@@ -70,18 +73,16 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
 
         const dto: IEmployerCreateRequestDto = {
             legalData: {
-                employerId: "",
                 name: dataFromApiResponse.name,
                 organizationNumber: dataFromApiResponse.orgNum,
                 address: dataFromApiResponse.address,
                 postArea: dataFromApiResponse.postArea,
-                zipCode: dataFromApiResponse.postArea,
+                zipCode: dataFromApiResponse.zipCode,
                 region: dataFromApiResponse.region,
                 hasAgreement: false,
-                requestBy: userName
+                requestedBy: userName
             },
-            usedData: {
-                employerId: "",
+            changeSuggestion: {
                 name: data.name,
                 organizationNumber: data.orgNum,
                 address: data.address,
@@ -89,7 +90,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                 zipCode: data.zipCode,
                 region: data.region,
                 hasAgreement: data.hasAgreement,
-                requestBy: userName
+                requestedBy: userName
             }
         }
 
@@ -111,7 +112,8 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
         }
 
         dispatch(employerStateActions.addNewEmployer(response, shortData));
-        console.warn("DEV :: no redirect added")
+        dispatch(employerStateActions.setSelected(response));
+        navigate("../employers/details")
 
         setApiLoading(false)
     }
@@ -163,7 +165,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                         variant="standard"
                         label={t("address")}
                         error={Boolean(errors.address)}
-                        helperText={errors.address ? errors.address.message : `${t("addressOfficial")}: ${dataFromApiResponse.address}`}
+                        helperText={errors.address ? errors.address.message : `${t("addressLegal")}: ${dataFromApiResponse.address}`}
                         size="small"
                         fullWidth
                         disabled={!validIndustryCode || employerExist}
@@ -176,7 +178,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                         type="text"
                         variant="standard"
                         error={Boolean(errors.zipCode)}
-                        helperText={errors.zipCode ? errors.zipCode.message : `${t("zipCodeLegal")}: ${dataFromApiResponse.zipCode}`}
+                        helperText={errors.zipCode ? errors.zipCode.message : `${t("zipcodeLegal")}: ${dataFromApiResponse.zipCode}`}
                         size="small"
                         fullWidth
                         disabled={!validIndustryCode || employerExist}
@@ -189,7 +191,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                         type="text"
                         variant="standard"
                         error={Boolean(errors.postArea)}
-                        helperText={errors.postArea ? errors.postArea.message : `${t("postalAreaLegal")}: ${dataFromApiResponse.postArea}`}
+                        helperText={errors.postArea ? errors.postArea.message : `${t("postalAeraLegal")}: ${dataFromApiResponse.postArea}`}
                         size="small"
                         fullWidth
                         disabled={!validIndustryCode || employerExist}
@@ -221,12 +223,15 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <FormControlLabel control={<Checkbox { ...register("hasAgreement")} />} label={t("hasCollectiveAgreement")} />
+                    <FormControlLabel
+                        disabled={!validIndustryCode || employerExist}
+                        control={<Checkbox { ...register("hasAgreement")} />} 
+                        label={t("hasCollectiveAgreement")} />
                 </Grid>
                 
                 {!validIndustryCode && (
                     <Grid item xs={12}>
-                        <Typography variant="caption" component="div" color="red">
+                        <Typography variant="subtitle2" component="div" color="red" sx={{mb: 1}}>
                             {t("wrongIndustryCodeError")}
                         </Typography>
                     </Grid>
@@ -234,8 +239,16 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
 
                 {employerExist && (
                     <Grid item xs={12}>
-                        <Typography variant="caption" component="div" color="red">
+                        <Typography variant="subtitle2" component="div" color="red" sx={{mb: 2}}>
                             {t("employerExistError")}
+                        </Typography>
+                    </Grid>
+                )}
+
+                {Boolean(formErrorMsg) && (
+                    <Grid item xs={12}>
+                        <Typography variant="subtitle2" component="div" color="red" sx={{mb: 2}}>
+                            {formErrorMsg}
                         </Typography>
                     </Grid>
                 )}
@@ -246,8 +259,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                         color="primary"
                         variant="outlined"
                         fullWidth 
-                        disabled={!validIndustryCode || employerExist}
-                        sx={{mt:1}}>
+                        disabled={!validIndustryCode || employerExist}>
                         {t("register")}
                     </Button>
                 </Grid>
@@ -256,6 +268,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                     <Button 
                     type="button"
                     color="error"
+                    fullWidth
                     variant="outlined"
                     onClick={() => setQueryResult(undefined)} >
                         {t("remove")}

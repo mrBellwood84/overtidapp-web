@@ -7,7 +7,7 @@
 export interface IEmployerEditSuggestionDto {
 
     /** id of employer entity */
-    employerId: string;
+    employerId?: string;
 
     /** suggested name */
     name: string;
@@ -31,5 +31,5 @@ export interface IEmployerEditSuggestionDto {
     hasAgreement: boolean;
 
     /** suggesting users username */
-    requestBy: string;
+    requestedBy: string;
 }

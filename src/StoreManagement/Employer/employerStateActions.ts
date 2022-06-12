@@ -41,6 +41,11 @@ export const employerStateActions = {
         data: data,
     } as const),
 
+    /** reset filtered lists */
+    resetFilteredLists: () => ({
+        type: "EMPLOYER_RESET_FILTERED_LISTS",
+    } as const),
+
     /**
      * Add employer to dataset
      * @param fullInfoData set null if only adding short info data

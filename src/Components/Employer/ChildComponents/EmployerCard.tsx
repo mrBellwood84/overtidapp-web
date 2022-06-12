@@ -1,5 +1,4 @@
 import { Card, CardContent, Typography } from "@mui/material"
-import { useTransition } from "react"
 import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -44,7 +43,7 @@ export const EmployerCard = ({employer}: IProps) => {
                 <Typography
                     variant="caption"
                     color="GrayText">
-                        {t("orgNumberShort")} {employer.organizationNumber}
+                        {t("orgNumberShort")}: {employer.organizationNumber}
                 </Typography>
             </CardContent>
         </Card>

@@ -35,7 +35,7 @@ export const EmployerFullInfoSearchBar = ({ maxItems }:IProps) => {
         
         let res: IEmployerFull[] = [];
 
-        employers.map(emp => {
+        employers.forEach(emp => {
             let name = emp.nameUsed.toUpperCase()
             let org = emp.organizationNumber
             let add = emp.addressUsed.toUpperCase()

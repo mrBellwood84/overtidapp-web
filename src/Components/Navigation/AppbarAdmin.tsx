@@ -8,11 +8,6 @@ const links: ILinkData[] = [
         linkText: "employers",
         linkIcon: <Work />,
         href: "../employers"
-    },
-    {
-        linkText: "collectiveAgreements",
-        linkIcon: undefined,
-        href: "../agreements/collectiveagreement"
     }
 ]
 
