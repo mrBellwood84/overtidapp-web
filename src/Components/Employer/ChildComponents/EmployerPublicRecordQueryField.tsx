@@ -1,18 +1,22 @@
 import { Search } from "@mui/icons-material";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material"
-import { ChangeEvent, SetStateAction, useState } from "react"
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { ChangeEvent, SetStateAction, useState, useTransition } from "react"
 import { useTranslation } from "react-i18next";
-import { externalApiRequests } from "../../../../ApiAgent/externalApiRequests";
-import { IBrrregEntity } from "../../../../Data/External Request/IBrregEntity"
-import { stringFormat } from "../../../../Utils/Misc/stringFormat";
-import { LoadBox } from "../../../Misc/LoadBox";
+import { externalApiRequests } from "../../../ApiAgent/externalApiRequests";
+import { IBrrregEntity } from "../../../Data/External Request/IBrregEntity"
+import { stringFormat } from "../../../Utils/Misc/stringFormat";
+import { LoadBox } from "../../Misc/LoadBox";
+
 
 interface IProps {
+    /** Set query result in local hook */
     setQueryResult: React.Dispatch<SetStateAction<IBrrregEntity | number | undefined>>;
-    setOrgNum: React.Dispatch<SetStateAction<string | undefined>>
+    /** Set queried organization number in local hook */
+    setOrgNum: React.Dispatch<SetStateAction<string | undefined>>;
 }
 
-export const QueryNewEmployerField = ({setQueryResult, setOrgNum} :IProps) => {
+/** field for query employer by organization number in public record */
+export const EmployerPublicRecordQueryField = ( { setQueryResult, setOrgNum }: IProps) => {
 
     const { t } = useTranslation("employment");
 
@@ -84,7 +88,6 @@ export const QueryNewEmployerField = ({setQueryResult, setOrgNum} :IProps) => {
         var response = await externalApiRequests.brregSearchOrgNum(orgNumStriped)
         setQueryResult(response)
         setApiLoading(false)
-
     }
 
     if (apiLoading) return <LoadBox />

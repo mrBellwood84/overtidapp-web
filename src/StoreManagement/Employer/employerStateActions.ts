@@ -41,6 +41,17 @@ export const employerStateActions = {
         data: data,
     } as const),
 
+    /**
+     * Add employer to dataset
+     * @param fullInfoData set null if only adding short info data
+     * @param shortInfoData set null if only adding long info data
+     */
+    addNewEmployer: (fullInfoData: IEmployerFull | null, shortInfoData: IEmployerShort | null) => ({
+        type: "EMPLOYER_ADD_EMPLOYER_DATA",
+        full: fullInfoData,
+        short: shortInfoData
+    } as const),
+
     /** global action for sign out */
     sign_out: () => ({
         type: "SIGN_OUT",

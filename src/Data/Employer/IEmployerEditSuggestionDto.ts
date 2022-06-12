@@ -28,7 +28,7 @@ export interface IEmployerEditSuggestionDto {
     region: string;
 
     /** suggest has agreement */
-    hasAgreement: string;
+    hasAgreement: boolean;
 
     /** suggesting users username */
     requestBy: string;

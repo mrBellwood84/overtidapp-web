@@ -16,7 +16,7 @@ const subDomain = {
     deleteAllFromuser: "public/employer/suggest/deleteallfromuser",
 }
 
-const employerApiAgent = {
+export const employerApiAgent = {
 
     /** get short info data list from api */
     getShortDataList: async(): Promise<IEmployerShort[] |  number> => {
@@ -64,9 +64,18 @@ const employerApiAgent = {
     },
 
     /** create new employer from user request, also adds a change suggestion entity for employer entity */
-    createNewEmployer: async (request: IEmployerCreateRequestDto): Promise<number> => {
+    createNewEmployer: async (request: IEmployerCreateRequestDto): Promise<IEmployerFull | number> => {
         var res = await rootApiAgent.post(subDomain.main, request);
-        return res.status;
+        
+        if (!res.ok) return res.status
+
+        try {
+            var body: IEmployerFull = await res.json();
+            return body;
+        } catch (ex) {
+            console.error("DEV :: could not parse employer entity from api response")
+            return 500;
+        }
     },
 
     /** add a change suggestion for an existing employer entity */

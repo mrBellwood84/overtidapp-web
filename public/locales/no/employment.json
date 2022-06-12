@@ -52,6 +52,7 @@
     "back"              : "Tilbake",
     "close"             : "Lukk",
     "register"          : "Registrer",
+    "remove"            : "Fjern",
 
     "addEmploymentContract"     : "Legg til ny arbeidskontrakt",
     "editEmploymentContract"    : "Rediger arbeidskontrakt",

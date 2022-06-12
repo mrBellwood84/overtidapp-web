@@ -1,6 +1,3 @@
-import { IAccountState } from "../../StoreManagement/Account/IAccounState";
-import { IEmploymentState } from "../../StoreManagement/Employment/IEmploymentState";
-
 /** handle session storage for state */
 export const stateStorage = {
     /**

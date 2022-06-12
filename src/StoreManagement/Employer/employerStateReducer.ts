@@ -1,5 +1,3 @@
-import { RedoTwoTone } from "@mui/icons-material"
-import { act } from "react-dom/test-utils"
 import { IEmployerFull } from "../../Data/Employer/IEmployerFull"
 import { IEmployerShort } from "../../Data/Employer/IEmployerShort"
 import { stateStorage } from "../../Utils/Misc/stateStorage"
@@ -32,6 +30,7 @@ type Action =
     | ReturnType<typeof employerStateActions.setShortDataFiltered>
     | ReturnType<typeof employerStateActions.setChangeSuggestions>
     | ReturnType<typeof employerStateActions.setSelected>
+    | ReturnType<typeof employerStateActions.addNewEmployer>
     | ReturnType<typeof employerStateActions.sign_out>
     | ReturnType<typeof employerStateActions.loadStateFromSession>
 
@@ -56,6 +55,8 @@ export const employerStateReducer = (
 ): IEmployerState => {
     
     let newState: IEmployerState;
+    let fullList: IEmployerFull[];
+    let shortList: IEmployerShort[];
 
     switch(action.type) {
 
@@ -118,6 +119,26 @@ export const employerStateReducer = (
             stateStorage.set(key, state)
             return newState;
         
+        case "EMPLOYER_ADD_EMPLOYER_DATA": 
+            
+            fullList = [...state.employersFullInfoList]
+            shortList = [...state.employersShortInfoList]
+
+            if (action.full !== null) fullList.push(action.full)
+            if (action.short !== null) shortList.push(action.short)
+
+            newState = {
+                ...state,
+                employersFullInfoList: sortEmployersFull(fullList),
+                employersFullInfoFiltered: sortEmployersFull(fullList),
+                employersShortInfoList: sortEmployerShort(shortList),
+                employersShortInfoFiltered: sortEmployerShort(shortList)
+            }
+
+            stateStorage.set(key, newState);
+            return newState;
+            
+
         case "SIGN_OUT": 
             return { ...initState }
         

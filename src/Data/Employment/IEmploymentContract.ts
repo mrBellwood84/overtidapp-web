@@ -1,5 +1,5 @@
 import { IContractSalary } from "../../Data/Employment/IContractSalary";
-import { IEmployer } from "./IEmployer";
+import { IEmployerFull } from "../Employer/IEmployerFull";
 
 /** Hold information for employment contract between employer and employee */
 export interface IEmploymentContract {
@@ -10,7 +10,7 @@ export interface IEmploymentContract {
     employeeId: string;
 
     /** Employer object */
-    employer: IEmployer;
+    employer: IEmployerFull;
 
     /** Title / job */
     jobTitle: string;
