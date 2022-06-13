@@ -1,4 +1,3 @@
-import { SubdirectoryArrowLeft } from "@mui/icons-material";
 import { IEmployerChangeSuggestion } from "../../Data/Employer/IEmployerChangeSuggestion";
 import { IEmployerCreateRequestDto } from "../../Data/Employer/IEmployerCreateRequestDto";
 import { IEmployerEditRequestDto } from "../../Data/Employer/IEmployerEditRequestDto";
@@ -6,7 +5,6 @@ import { IEmployerEditSuggestionDto } from "../../Data/Employer/IEmployerEditSug
 import { IEmployerFull } from "../../Data/Employer/IEmployerFull"
 import { IEmployerShort } from "../../Data/Employer/IEmployerShort";
 import { IRequestById } from "../../Data/Misc/IRequestById";
-import { IRequestByUserName } from "../../Data/Misc/IRequestByUserName";
 import { rootApiAgent } from "../rootApiAgent"
 
 const subDomain = {
@@ -85,10 +83,19 @@ export const employerApiAgent = {
     },
 
     /** updates an employer entity based on change request from user */
-    updateEmployerFromChangeSuggestion: async (request: IEmployerEditRequestDto): Promise<number> => {
+    updateEmployerFromChangeSuggestion: async (request: IEmployerEditRequestDto): Promise<IEmployerFull | number> => {
         var res = await rootApiAgent.put(subDomain.main, request)
-        return res.status;
+        if (!res.ok)  return res.status;
+
+        try {
+            var body: IEmployerFull = await res.json();
+            return body
+        } catch (ex) {
+            console.error("DEV :: could not parse employer entity from api response on update");
+            return 500;
+        }
     },
+
 
     /** delete an employer entity from database */
     deleteEmployer: async(id: string): Promise<number> => {
@@ -106,14 +113,4 @@ export const employerApiAgent = {
         var res = await rootApiAgent.delete(subDomain.suggest, dto)
         return res.status;
     },
-
-    /** delete collection of suggestions by username (if several added by same user) */
-    deleteSuggestionsByUserName: async (userName: string): Promise<number> => {
-        var dto: IRequestByUserName = { userName: userName }
-        var res = await rootApiAgent.delete(subDomain.deleteAllFromuser, dto)
-        return res.status;
-    }
-
-
-
 }

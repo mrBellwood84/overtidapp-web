@@ -1,6 +1,7 @@
 {
     "name"              : "Navn",
     "nameLegal"         : "Juridisk navn",
+    "nameSuggestions"   : "Forslag navn",
     "nameRequiredError" : "Navn mangler!",
 
     "orgNumberShort"    : "Org nr",
@@ -8,18 +9,22 @@
 
     "address"               : "Adresse",
     "addressLegal"          : "Juridisk adresse",
+    "addressSuggestions"    : "Forslag adresse",
     "adressRequireError"    : "Adresse mangler!",
 
     "postalArea"                : "Poststed",
     "postalAeraLegal"           : "Juridisk poststed",
+    "postalAreaSuggestions"     : "Forslag poststed",
     "postalAreaRequireError"    : "Poststed mangler!",
 
     "zipcode"               : "Postnummer",
     "zipcodeLegal"          : "Juridisk Postnummer",
+    "zipcodeSuggestions"    : "Forslag postnummer",
     "zipCodeRequireError"   : "Postnummer mangler!",
 
     "county"                : "Kommune",
     "countyLegal"           : "Juridisk Kommune",
+    "countySuggestion"      : "Forslag kommune",
     "countyRequireError"    : "Kommune mangler!",
 
     "hasCollectiveAgreement" : "Har tariffavtale",
@@ -42,16 +47,24 @@
     "add"               : "Legg til",
     "addEmployer"       : "Legg til ny arbeidsgiver",
 
+    "viewEmployer"      : "Vis profil for arbeidsgiver",
+
     "edit"              : "Rediger",
     "editEmployer"      : "Rediger profil for arbeidsgiver",
 
     "editRequests"      : "Endringsforespørsler",
     "editRequestsTip"   : "Se og rediger endringsforespørsler",
 
+    "editRequestOnly"   : "Endringsforespørsler",
+
     "back"              : "Tilbake",
     "close"             : "Lukk",
     "register"          : "Registrer",
+    "save"              : "Lagre",
     "remove"            : "Fjern",
+    "delete"            : "Slett",
+    "reset"             : "Tilbakestill",
+    "original"          : "Orginalt",
 
     "addEmploymentContract"     : "Legg til ny arbeidskontrakt",
     "editEmploymentContract"    : "Rediger arbeidskontrakt",

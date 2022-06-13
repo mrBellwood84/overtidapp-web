@@ -37,7 +37,10 @@ export interface IEmployerFull {
     regionUsed: string;
 
     /** id of collective agreement */
-    collectiveAgreement: any;
+    collectiveAgreementId: string;
+
+    /** true if employer has change request */
+    hasChangeRequest: boolean;
 
     /** date when employer was added */
     dateAdded: Date;

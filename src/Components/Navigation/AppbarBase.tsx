@@ -3,7 +3,7 @@ import { AppBar, Box, Button, Container, Dialog, IconButton, List, ListItem, Lis
 import { TransitionProps } from "@mui/material/transitions"
 import { forwardRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { ILinkData } from "../../Data/Misc/ILinkData"
 import { AppbarAccountBox } from "./AppbarAccountBox"
 

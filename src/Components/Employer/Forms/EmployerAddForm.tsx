@@ -33,7 +33,7 @@ type FormValues = {
 export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
 
     const employers = useSelector((state: AppState) => state.employer.employersFullInfoList);
-    const userName = useSelector((state: AppState) => state.account.account!.firstName);
+    const userName = useSelector((state: AppState) => state.account.account!.userName);
     const dispatch = useDispatch();
 
     const { t } = useTranslation("employment");
@@ -76,21 +76,21 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
                 name: dataFromApiResponse.name,
                 organizationNumber: dataFromApiResponse.orgNum,
                 address: dataFromApiResponse.address,
-                postArea: dataFromApiResponse.postArea,
+                postArea: stringFormat.capitalizeEachWord(dataFromApiResponse.postArea),
                 zipCode: dataFromApiResponse.zipCode,
-                region: dataFromApiResponse.region,
+                region: stringFormat.capitalizeEachWord(dataFromApiResponse.region),
                 hasAgreement: false,
-                requestedBy: userName
+                requestedBy: userName!
             },
             changeSuggestion: {
                 name: data.name,
                 organizationNumber: data.orgNum,
                 address: data.address,
-                postArea: data.postArea,
+                postArea: stringFormat.capitalizeEachWord(dataFromApiResponse.postArea),
                 zipCode: data.zipCode,
-                region: data.region,
+                region: stringFormat.capitalizeEachWord(dataFromApiResponse.region),
                 hasAgreement: data.hasAgreement,
-                requestedBy: userName
+                requestedBy: userName!
             }
         }
 
@@ -108,7 +108,7 @@ export const EmployerAddForm = ({queryResult, setQueryResult}: IProps) => {
             name: response.nameUsed,
             organizationNumber: response.organizationNumber,
             region: response.regionUsed,
-            hasAgreement: Boolean(response.collectiveAgreement),
+            hasAgreement: Boolean(response.collectiveAgreementId),
         }
 
         dispatch(employerStateActions.addNewEmployer(response, shortData));

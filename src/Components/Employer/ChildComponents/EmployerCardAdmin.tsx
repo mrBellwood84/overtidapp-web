@@ -1,4 +1,5 @@
-import { Card, CardContent, Typography } from "@mui/material"
+import { PriorityHigh } from "@mui/icons-material"
+import { Card, CardContent, CardHeader, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -9,7 +10,7 @@ interface IProps {
     employer: IEmployerFull,
 }
 
-export const EmployerCard = ({employer}: IProps) => {
+export const EmployerCardAdmin = ({employer}: IProps) => {
 
     const { t } = useTranslation("employment");
     const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export const EmployerCard = ({employer}: IProps) => {
                 cursor: "pointer",
                 opacity: 0.7,
                 transition: "0.2s",
+                bgcolor: employer.hasChangeRequest ? "#fdd" : "#dfd",
                 width: {
                     xs: "80vw",
                     sm: "250px"
@@ -35,10 +37,19 @@ export const EmployerCard = ({employer}: IProps) => {
                 ":hover": { opacity: 1}
             }} >
 
+            <CardHeader 
+                title={employer.nameUsed}
+                titleTypographyProps={{
+                    fontWeight: 500,
+                    fontSize: 24,
+                    pr: 2
+                }}
+                action={
+                    employer.hasChangeRequest ? <PriorityHigh color="action" /> : null
+                }
+                sx={{pb: 0}} />
+
             <CardContent>
-                <Typography variant="h5">
-                    {employer.nameUsed}
-                </Typography>
                 <Typography variant="body2" fontWeight={600}>
                     {employer.addressUsed}
                 </Typography>

@@ -1,4 +1,3 @@
-
 /**
  * Entity models for change suggestions as downloaded from web api.
  * Used for viewing and resolving change suggestions for employer data
@@ -19,6 +18,9 @@ export interface IEmployerChangeSuggestion {
 
     /** suggested new address */
     address: string;
+
+    /** suggested zipcode */
+    zipCode: string;
 
     /** suggested new post area */
     postArea: string;

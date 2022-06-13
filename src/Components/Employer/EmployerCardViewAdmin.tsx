@@ -8,14 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { employerApiAgent } from "../../ApiAgent/PublicData/employerApiAgent";
 import { employerStateActions } from "../../StoreManagement/Employer/employerStateActions";
 import { AppState } from "../../StoreManagement/rootStore"
-import { EmployerCard } from "./ChildComponents/EmployerCard";
-import { EmployerFullInfoSearchBar } from "./ChildComponents/EmployerFullInfoSearchBar";
+import { EmployerCardAdmin } from "./ChildComponents/EmployerCardAdmin";
+import { EmployerFullInfoSearchBarAdmin } from "./ChildComponents/EmployerFullInfoSearchBarAdmin";
 
 /** full page for viewing employer cards */
-export const EmployerCardView = () => {
+export const EmployerCardViewAdmin = () => {
 
     const employers = useSelector((state: AppState) => state.employer.employersFullInfoFiltered);
-    const dataLoaded = useSelector((state: AppState) => state.employer.employersFullInfoLoaded);
+    const fullDataLoaded = useSelector((state: AppState) => state.employer.employersFullInfoLoaded);
+    const suggDataLoaded = useSelector((state: AppState) => state.employer.employerChangeSuggestionLoaded);
     const dispatch = useDispatch();
     
     const navigate = useNavigate();
@@ -28,26 +29,40 @@ export const EmployerCardView = () => {
 
     useEffect(() => {
         const loadDataFromAPI = async () => {
-            if (dataLoaded) return;
+            if (fullDataLoaded) return;
 
             let emp = await employerApiAgent.getFullDataList();
 
             if (typeof(emp) === "number") {
-                console.error(emp, "Could not load employer data from web api")
+                console.error(emp, ": could not load employer data from web api")
                 return
             }
 
             dispatch(employerStateActions.setFullDataList(emp))
         }
 
+        const loadSuggestionDataFromAPI = async () => {
+            if (suggDataLoaded) return
+
+            var data = await employerApiAgent.getChangeSuggestions()
+            
+            if (typeof(data) === "number") {
+                console.error(data, ": could not load employer change suggestions from web api")
+                return;
+            }
+
+            dispatch(employerStateActions.setChangeSuggestions(data));
+        }
+
         const resetFilteredList = () => {
             dispatch(employerStateActions.resetFilteredLists());
         }
 
-        loadDataFromAPI()
-        resetFilteredList()
+        loadDataFromAPI();
+        loadSuggestionDataFromAPI();
+        resetFilteredList();
 
-    }, [dispatch, dataLoaded])
+    }, [dispatch, fullDataLoaded, suggDataLoaded])
 
     return (
         <Container sx={{mt: 1}}>
@@ -57,7 +72,7 @@ export const EmployerCardView = () => {
                 display: "flex",
                 alignItems: "center"
             }}>
-                <EmployerFullInfoSearchBar />
+                <EmployerFullInfoSearchBarAdmin />
                 
                 <Tooltip title={t("addEmployer")}>
                     <Button 
@@ -76,7 +91,7 @@ export const EmployerCardView = () => {
             <Grid container spacing={1} justifyContent="flex-start">
                 {employers.map(emp => (
                     <Grid item key={emp.id}>
-                        <EmployerCard employer={emp} />
+                        <EmployerCardAdmin employer={emp} />
                     </Grid>
                 ))}
             </Grid>

@@ -31,6 +31,7 @@ type Action =
     | ReturnType<typeof employerStateActions.setChangeSuggestions>
     | ReturnType<typeof employerStateActions.setSelected>
     | ReturnType<typeof employerStateActions.resetFilteredLists>
+    | ReturnType<typeof employerStateActions.resetDownloadStatus>
     | ReturnType<typeof employerStateActions.addNewEmployer>
     | ReturnType<typeof employerStateActions.sign_out>
     | ReturnType<typeof employerStateActions.loadStateFromSession>
@@ -131,6 +132,21 @@ export const employerStateReducer = (
                 employersShortInfoFiltered: shortList,
             }
 
+            stateStorage.set(key, newState)
+
+            return newState;
+        
+        case "EMPLOYER_RESET_DOWNLOAD_STATUS":
+
+            newState = {
+                ...state,
+                employersFullInfoLoaded: false,
+                employersShortInfoLoaded: false,
+                employerChangeSuggestionLoaded: false,
+            }
+
+            stateStorage.set(key, newState)
+
             return newState;
             
         case "EMPLOYER_ADD_EMPLOYER_DATA": 
@@ -145,8 +161,11 @@ export const employerStateReducer = (
                 ...state,
                 employersFullInfoList: sortEmployersFull(fullList),
                 employersFullInfoFiltered: sortEmployersFull(fullList),
+                employersFullInfoLoaded: false,
                 employersShortInfoList: sortEmployerShort(shortList),
-                employersShortInfoFiltered: sortEmployerShort(shortList)
+                employersShortInfoFiltered: sortEmployerShort(shortList),
+                employersShortInfoLoaded: false,
+                employerChangeSuggestionLoaded: false,
             }
 
             stateStorage.set(key, newState);

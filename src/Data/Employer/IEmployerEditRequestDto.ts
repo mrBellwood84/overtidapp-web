@@ -6,9 +6,6 @@
  */
 export interface IEmployerEditRequestDto {
 
-    /** id of edit suggestion entity */
-    requestId: string;
-
     /** id of employer entity */
     employerId: string;
 
@@ -31,7 +28,7 @@ export interface IEmployerEditRequestDto {
     region: string;
 
     /** new collective agreement id */
-    collectiveAgreementId: string;
+    collectiveAgreementId?: string;
 
     /** user name of user editing */
     editedBy: string;

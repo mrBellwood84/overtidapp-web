@@ -47,7 +47,10 @@ export const employerStateActions = {
     } as const),
 
     /**
-     * Add employer to dataset
+     * Add employer to dataset.
+     * 
+     * Also set dataLoaded for all fields to false to ensure db data was downloaded correctly
+     * 
      * @param fullInfoData set null if only adding short info data
      * @param shortInfoData set null if only adding long info data
      */
@@ -55,6 +58,11 @@ export const employerStateActions = {
         type: "EMPLOYER_ADD_EMPLOYER_DATA",
         full: fullInfoData,
         short: shortInfoData
+    } as const),
+
+    /** Set all download statuses for fields as false to force new api download on next component load */
+    resetDownloadStatus: () => ({
+        type: "EMPLOYER_RESET_DOWNLOAD_STATUS"
     } as const),
 
     /** global action for sign out */
