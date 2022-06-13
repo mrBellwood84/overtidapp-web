@@ -3,7 +3,7 @@ import { AppBar, Box, Button, Container, Dialog, IconButton, List, ListItem, Lis
 import { TransitionProps } from "@mui/material/transitions"
 import { forwardRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ILinkData } from "../../Data/Misc/ILinkData"
 import { AppbarAccountBox } from "./AppbarAccountBox"
 
@@ -24,10 +24,17 @@ export const AppbarBase = ({links}: IProps) => {
 
     const { t } = useTranslation()
 
+    const navigate = useNavigate()
+
     const [menuDialogOpen, setMenuDialogOpen] = useState<boolean>(false)
 
     const handleMenuDialogOpen = () => setMenuDialogOpen(true)
-    const handleMenuDialogClose = () => {setMenuDialogOpen(false); console.log("close", menuDialogOpen)}
+    const handleMenuDialogClose = () => setMenuDialogOpen(false)
+
+    const handleListButtonClick = (url: string) => {
+        handleMenuDialogClose()
+        navigate(url)
+    }
 
 
     return (
@@ -137,8 +144,8 @@ export const AppbarBase = ({links}: IProps) => {
                         
                         <List dense>
                             {links.map(link => (
-                                <ListItem key={`list-menu-item-${link.href}`} component={Link} to={link.href} >
-                                    <ListItemButton onClick={handleMenuDialogClose} dense>
+                                <ListItem key={`list-menu-item-${link.href}`}>
+                                    <ListItemButton onClick={() => handleListButtonClick(link.href)} dense>
                                         <ListItemIcon>
                                             {link.linkIcon && link.linkIcon}
                                         </ListItemIcon>
