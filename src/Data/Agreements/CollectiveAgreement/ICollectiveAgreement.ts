@@ -1,16 +1,17 @@
 import { ICollectiveAgreementEdition } from "./ICollectiveAgreementEdition";
 
-/** Defines data for a collective agreement */
+/** model for for collective agreement. 
+ *  Used for components and response DTO from API */
 export interface ICollectiveAgreement {
-    
-    /** db entity id provided by backend */
+    /** entity id */
     id: string;
-    /** name of agreement */
-    agreementName: string;
-    /** name of employee organization */
-    employeeOrganization: string
-    /** name of employer organization */
+    /** agreement name */
+    name: string;
+    /** employee organization */
+    employeeOrganization: string;
+    /** employer organization */
     employerOrganization: string;
-    /** list of editions of the collective agreement */
-    editions: ICollectiveAgreementEdition[];
+
+    /** list of editons of the collective agreement */
+    edition: ICollectiveAgreementEdition[];
 }

@@ -1,16 +1,46 @@
-import { ISalaryTable } from "./ISalaryTable";
+import { IAgreementRuleBase } from "../IAgreementRuleBase";
+import { IRuleExtendRate } from "../IRuleExtendRate";
 
-/** Model for collective agreements edition.
- * Usually valid for two years.
- * Salary tables are usually updated each year and stored as object list in edition
- */
+/** 
+ * 
+ * short internal interface for max hour definitions inside the collective agreement */
+interface IMaxHourDefinition {
+    /** regular hours per day */
+    limit: number;
+    /** regular hours per week */
+    maxHourWeek: number;
+    /** regular hours per month */
+    maxHourMonth: number
+    /** reference set as list of undefined to match backend data model */
+    reference: undefined[];
+}
+
+/** model for editions of the collective agreement */
 export interface ICollectiveAgreementEdition {
-    /** db entity id provided by backend only */
+    /** entity id */
     id: string;
-    /** date of valid from */
+    
+    /** agreement start date */
     validFrom: Date;
-    /** date of expiration if expired */
-    expired?: Date;
-    /** salary table containing minimum wage and wage supplements */
-    salaryTables: ISalaryTable[];
+    /** agreement expiration date */
+    expire: Date;
+    
+    /** set defnitions for regular workhours per day, week and month */
+    maxHourDefinitions: IMaxHourDefinition[];
+
+    /** contain paragraph and reference for how to calculate overtime */
+    timeCalculationRule: IAgreementRuleBase;
+
+    /** rate and paragraph for regular overtime */
+    overtimeRegular: IAgreementRuleBase & IRuleExtendRate;
+
+    /** rate and paragraph for overtime night */
+    overtimeNight: IAgreementRuleBase & IRuleExtendRate;
+
+    /** rate and paragraph for overtime day off */
+    overtimeDayOff: IAgreementRuleBase & IRuleExtendRate;
+
+    /** rate and paragraph for overtime day off for part time employees */
+    overtimeDayoffPartTime: IAgreementRuleBase & IRuleExtendRate;
+
 }
