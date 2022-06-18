@@ -6,55 +6,55 @@ import { IWorkdayRuleset } from "./IWorkhourDataRuleset";
 export class _WorkhourData {
 
     /** rawdata as stored in database */
-    ruleset: IWorkdayRuleset;
+    // ruleset: IWorkdayRuleset;
 
-    hourWage: number;
+    // hourWage: number;
 
-    weekendHours: number;
-    eveningHours: number;
-    nightHours: number;
-    holydayHours: number;
+    // weekendHours: number;
+    // eveningHours: number;
+    // nightHours: number;
+    // holydayHours: number;
 
-    weekendRate: number;
-    eveningRate: number;
-    nightRate: number;
+    // weekendRate: number;
+    // eveningRate: number;
+    // nightRate: number;
 
-    weekendTotal: number;
-    eveningTotal: number;
-    nightTotal: number;
+    // weekendTotal: number;
+    // eveningTotal: number;
+    // nightTotal: number;
 
 
-    workhoursTotal: number;
-    workhourSalary: number;
+    // workhoursTotal: number;
+    // workhourSalary: number;
 
-    totalSupplement: number;
+    // totalSupplement: number;
 
     
 
     constructor(primitiveData: IWorkhourDataPrimitive, ruleset: IWorkdayRuleset){
 
-        this.ruleset = ruleset;     // hold ruleset for calculations
+        // this.ruleset = ruleset;     // hold ruleset for calculations
 
-        this.hourWage       = ruleset.hourWage;
+        // this.hourWage       = ruleset.hourWage;
 
-        this.weekendHours   = this.ruleset.supplementSunday ? this.resolveWeekendHours() : 0;
-        this.eveningHours   = this.resolveEveningHours()
-        this.nightHours     = this.resolveNigthHours()
-        this.holydayHours   = this.resolveHolydayHours()
+        // this.weekendHours   = this.ruleset.supplementSunday ? this.resolveWeekendHours() : 0;
+        // this.eveningHours   = this.resolveEveningHours()
+        // this.nightHours     = this.resolveNigthHours()
+        // this.holydayHours   = this.resolveHolydayHours()
 
-        this.weekendRate    = ruleset.supplementSunday ? ruleset.supplementSunday.rate : 0;
-        this.eveningRate    = ruleset.supplementEvening ? ruleset.supplementEvening.rate : 0;
-        this.nightRate      = ruleset.supplementNightRest ? (primitiveData.nightManualLabour ? (ruleset.supplementNightLabour!.rate + ruleset.supplementNightRest.rate) : ruleset.supplementNightRest.rate) : 0
+        // this.weekendRate    = ruleset.supplementSunday ? ruleset.supplementSunday.rate : 0;
+        // this.eveningRate    = ruleset.supplementEvening ? ruleset.supplementEvening.rate : 0;
+        // this.nightRate      = ruleset.supplementNightRest ? (primitiveData.nightManualLabour ? (ruleset.supplementNightLabour!.rate + ruleset.supplementNightRest.rate) : ruleset.supplementNightRest.rate) : 0
 
-        this.weekendTotal   = this.resolveRatePerHour(this.weekendHours, this.weekendRate);
-        this.eveningTotal   = this.resolveRatePerHour(this.eveningHours, this.weekendRate);
-        this.nightTotal     = this.resolveRatePerHour(this.nightHours, this.nightRate);
+        // this.weekendTotal   = this.resolveRatePerHour(this.weekendHours, this.weekendRate);
+        // this.eveningTotal   = this.resolveRatePerHour(this.eveningHours, this.weekendRate);
+        // this.nightTotal     = this.resolveRatePerHour(this.nightHours, this.nightRate);
 
-        this.workhoursTotal = this.resolveWorkHours(primitiveData.start, primitiveData.end)
+        // this.workhoursTotal = this.resolveWorkHours(primitiveData.start, primitiveData.end)
 
-        this.workhourSalary = this.resolveRatePerHour(this.workhoursTotal, this.hourWage);
+        // this.workhourSalary = this.resolveRatePerHour(this.workhoursTotal, this.hourWage);
 
-        this.totalSupplement = this.resolveSupplementTotal();
+        // this.totalSupplement = this.resolveSupplementTotal();
     }
 
     private resolveWorkHours = (start: Date, end: Date) => {
@@ -107,7 +107,7 @@ export class _WorkhourData {
     }
 
     private resolveSupplementTotal = () => {
-        return this.weekendTotal + this.eveningTotal + this.nightTotal;
+        // return this.weekendTotal + this.eveningTotal + this.nightTotal;
     }
 
     /** Get hours within supplement rule. To be used within methods! 

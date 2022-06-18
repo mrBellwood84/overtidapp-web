@@ -1,9 +1,11 @@
+import { IAml } from "../../Data/Agreements/AML/IAml"
 import { ICollectiveAgreement } from "../../Data/Agreements/CollectiveAgreement/ICollectiveAgreement"
 import { IRequestById } from "../../Data/Misc/IRequestById"
 import { rootApiAgent } from "../rootApiAgent"
 
 const urls = {
-    collectiveAgreement: "public/collectiveagreement"
+    collectiveAgreement: "public/collectiveagreement",
+    aml: "public/aml"
 }
 
 /** collection of agreement api call functions */
@@ -16,13 +18,8 @@ export const agreementApiAgent = {
 
         if (!response.ok) return response.status;
 
-        try {
-            var body: ICollectiveAgreement[] = await response.json();
-            return body
-        } catch (ex) {
-            console.error("DEV :: Could not parse collective agreements from api response", ex)
-            return 500;
-        }
+        var body = await response.json() as ICollectiveAgreement[]
+        return body
     },
 
     /** get single collective agreement from api by entity id query */
@@ -36,12 +33,17 @@ export const agreementApiAgent = {
 
         if (!response.ok) return response.status;
 
-        try {
-            var body: ICollectiveAgreement = await response.json();
-            return body;
-        } catch (ex) {
-            console.error("DEV :: could not parse collective agreement from api response", ex)
-            return 500
-        }
+        var body = await response.json() as ICollectiveAgreement;
+        return body;
+    },
+
+    /** get working environment act data set */
+    getAML: async (): Promise<IAml | number> => {
+        var response = await rootApiAgent.get(urls.aml)
+
+        if (!response.ok) return response.status
+
+        var body = await response.json() as IAml
+        return body
     }
 }
