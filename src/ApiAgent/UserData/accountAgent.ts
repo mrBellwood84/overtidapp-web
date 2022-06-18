@@ -19,16 +19,10 @@ export const accountAgent = {
         
         let response = await rootApiAgent.post(signinDomain, signinData);
 
-        if (!response.ok) {
-            return response.status;
-        }
-        try {
-            let res: ISigninResponse = await response.json();
-            return res;
-        } catch (ex) {
-            console.error("DEV :: Could not get account object when user signed in", ex)
-            return 500;
-        }
+        if (!response.ok) return response.status;
+
+        let body: ISigninResponse = await response.json();
+        return body;
     },
 
     /**
@@ -42,13 +36,7 @@ export const accountAgent = {
 
         if (!response.ok) return response.status
 
-        try {
-            let res: ISigninResponse = await response.json()
-            return res;
-        } catch (ex) {
-            console.error("DEV :: Cound not get accout object when user signed up!", ex)
-            return 500;
-        }
-
+        let body: ISigninResponse = await response.json()
+        return body;
     }
 }

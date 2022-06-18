@@ -18,82 +18,57 @@ export const employerApiAgent = {
 
     /** get short info data list from api */
     getShortDataList: async(): Promise<IEmployerShort[] |  number> => {
-        var res = await rootApiAgent.get(subDomain.main);
+        var response = await rootApiAgent.get(subDomain.main);
 
-        if (!res.ok) return res.status
+        if (!response.ok) return response.status
 
-        try {
-            var body: IEmployerShort[] = await res.json();
-            return body;
-        } catch (ex) {
-            console.error("DEV :: could not parse employer short data list recived from web api", ex);
-            return 500;
-        }
+        var body: IEmployerShort[] = await response.json();
+        return body;
     },
 
     /** get full info data list from api */
     getFullDataList: async (): Promise<IEmployerFull[] | number> => {
-        var res = await rootApiAgent.get(subDomain.full);
+        var response = await rootApiAgent.get(subDomain.full);
 
-        if (!res.ok) return res.status
+        if (!response.ok) return response.status
 
-        try {
-            var body: IEmployerFull[] = await res.json();
-            return body
-        } catch (ex) {
-            console.error("DEV :: could not parse employers full data list recived from web api", ex);
-            return 500;
-        }
+        var body: IEmployerFull[] = await response.json();
+        return body
     },
 
     /** get change suggestions from web ap */
     getChangeSuggestions: async(): Promise<IEmployerChangeSuggestion[] | number> => {
-        var res = await rootApiAgent.get(subDomain.suggest);
+        var response = await rootApiAgent.get(subDomain.suggest);
 
-        if (!res.ok) return res.status;
+        if (!response.ok) return response.status;
         
-        try {
-            var body: IEmployerChangeSuggestion[] = await res.json();
-            return body;
-        } catch (ex) {
-            console.error("DEV :: could not parse employer change suggestions list data recived from web api ")
-            return 500;
-        }
+        var body: IEmployerChangeSuggestion[] = await response.json();
+        return body;
     },
 
     /** create new employer from user request, also adds a change suggestion entity for employer entity */
     createNewEmployer: async (request: IEmployerCreateRequestDto): Promise<IEmployerFull | number> => {
-        var res = await rootApiAgent.post(subDomain.main, request);
+        var response = await rootApiAgent.post(subDomain.main, request);
         
-        if (!res.ok) return res.status
+        if (!response.ok) return response.status
 
-        try {
-            var body: IEmployerFull = await res.json();
-            return body;
-        } catch (ex) {
-            console.error("DEV :: could not parse employer entity from api response")
-            return 500;
-        }
+        var body: IEmployerFull = await response.json();
+        return body;
     },
 
     /** add a change suggestion for an existing employer entity */
     addChangeSuggestionFromUser: async (request: IEmployerEditSuggestionDto): Promise<number> => {
-        var res = await rootApiAgent.post(subDomain.suggest, request)
-        return res.status;
+        var response = await rootApiAgent.post(subDomain.suggest, request)
+        return response.status;
     },
 
     /** updates an employer entity based on change request from user */
     updateEmployerFromChangeSuggestion: async (request: IEmployerEditRequestDto): Promise<IEmployerFull | number> => {
-        var res = await rootApiAgent.put(subDomain.main, request)
-        if (!res.ok)  return res.status;
+        var response = await rootApiAgent.put(subDomain.main, request)
+        if (!response.ok)  return response.status;
 
-        try {
-            var body: IEmployerFull = await res.json();
-            return body
-        } catch (ex) {
-            console.error("DEV :: could not parse employer entity from api response on update");
-            return 500;
-        }
+        var body: IEmployerFull = await response.json();
+        return body
     },
 
 
@@ -102,15 +77,15 @@ export const employerApiAgent = {
         
         var dto: IRequestById = { id: id };
 
-        var res = await rootApiAgent.delete(subDomain.main, dto)
+        var response = await rootApiAgent.delete(subDomain.main, dto)
 
-        return res.status;
+        return response.status;
     },
 
     /** delete a suggestion by entity id */
     deleteSuggestionById: async (id: string): Promise<number> => {
         var dto: IRequestById = { id: id };
-        var res = await rootApiAgent.delete(subDomain.suggest, dto)
-        return res.status;
+        var response = await rootApiAgent.delete(subDomain.suggest, dto)
+        return response.status;
     },
 }
